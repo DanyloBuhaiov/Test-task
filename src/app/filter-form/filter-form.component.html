@@ -1,0 +1,35 @@
+<h3 class="text-center">Please set search parameters</h3>
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 params">
+          <div class="form-group">
+            <label for="breed-filter">Breed</label>
+            <select class="form-control" id="breed-filter" formControlName="breedId">
+              <option value="" [defaultSelected]="true">All breeds</option>
+              <option *ngFor="let item of catInfoList" [value]="item.id">{{item.name}}</option>
+            </select>
+            <p *ngIf="errorLoadCatList" class="text-danger">Unable to load breeds: {{errorLoadCatList}}</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 params">
+          <div class="form-group">
+            <label for="img-limit">Limit</label>
+            <select class="form-control" id="img-limit" formControlName="limit">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="params">
+          <button type="submit" class="btn btn-success">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

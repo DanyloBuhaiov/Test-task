@@ -1,0 +1,12 @@
+
+<h4 class="text-center">Search results</h4>
+<div *ngIf="isLoading" class="d-flex justify-content-center">
+  <app-loader></app-loader>
+</div>
+<h3 *ngIf="searchResultListError" class="text-center text-danger">{{searchResultListError}}</h3>
+<div *ngIf="!isLoading && !searchResultListError" class="row">
+  <h5 *ngIf="!searchResultList.length" class="text-center text-primary">No images!</h5>
+  <div *ngFor="let item of searchResultList" class="col-lg-3 col-md-4 col-sm-6 image">
+    <img class="img-fluid" [src]="item.url" [alt]="item.id">
+  </div>
+</div>
